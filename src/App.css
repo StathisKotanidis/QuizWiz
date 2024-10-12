@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100vh;
+}
+
+body {
+  height: 100%;
+  background-color: #e6e6fa;
+  font-family: "Roboto", sans-serif;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.appContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 6rem;
+}
