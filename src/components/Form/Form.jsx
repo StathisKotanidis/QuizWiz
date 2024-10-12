@@ -39,8 +39,6 @@ function Form() {
       dispatch({ type: "getCategory", payload: e.target.value });
   }
 
-  //const API_URL = `https://opentdb.com/api.php?amount=${questions}&category=${category}&difficulty=${difficulty}&type=multiple`;
-
   return (
     <form className={styles.formContainer}>
       <NumberOfQuestions
@@ -52,11 +50,10 @@ function Form() {
         difficulty={difficulty}
       />
       <CategorySelect onHandleUserInput={handleUserInput} category={category} />
-
-      <div className={styles.buttonContainer}>
-        <Button text="Play" />
-      </div>
+      <Button text="Play" className={styles.buttonContainer} />
     </form>
   );
 }
 export default Form;
+
+//const API_URL = `https://opentdb.com/api.php?amount=${questions}&category=${category}&difficulty=${difficulty}&type=multiple`;
