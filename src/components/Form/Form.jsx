@@ -1,25 +1,71 @@
+import { useReducer } from "react";
 import styles from "./Form.module.css";
 
+const initialState = {
+  questions: 0,
+  difficulty: "Easy",
+  category: "General Knowledge",
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "getQuestions":
+      return { ...state, questions: action.payload };
+    case "getDifficulty":
+      return { ...state, difficulty: action.payload };
+    case "getCategory":
+      return { ...state, category: action.payload };
+    default:
+      return state;
+  }
+}
+
 function Form() {
+  const [{ questions, difficulty, category }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
+
+  function handleUserInput(e, type) {
+    if (type === "getQuestions")
+      dispatch({ type: "getQuestions", payload: e.target.value });
+    if (type === "getDifficulty")
+      dispatch({ type: "getDifficulty", payload: e.target.value });
+    if (type === "getCategory")
+      dispatch({ type: "getCategory", payload: e.target.value });
+  }
+
+  const API_URL = `https://opentdb.com/api.php?amount=${questions}&category=${category}&difficulty=${difficulty}&type=multiple`;
+
   return (
     <form className={styles.formContainer}>
       <div className={styles.questionsContainer}>
         <label htmlFor="questions">Questions</label>
-        <input type="number" id="questions"></input>
+        <input
+          type="number"
+          id="questions"
+          onChange={(e) => handleUserInput(e, "getQuestions")}
+        ></input>
       </div>
 
       <div className={styles.difficultyContainer}>
         <label htmlFor="difficulty">Difficulty</label>
-        <select id="difficulty">
-          <option value="Easy">Easy</option>
-          <option value="Medium">Medium</option>
-          <option value="Hard">Hard</option>
+        <select
+          id="difficulty"
+          onChange={(e) => handleUserInput(e, "getDifficulty")}
+        >
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
         </select>
       </div>
 
       <div className={styles.categoryContainer}>
         <label htmlFor="category">Category</label>
-        <select id="category">
+        <select
+          id="category"
+          onChange={(e) => handleUserInput(e, "getCategory")}
+        >
           <option value="9">General Knowledge</option>
           <option value="10">Books</option>
           <option value="11">Films</option>
@@ -47,9 +93,12 @@ function Form() {
         </select>
       </div>
 
-      <button>Play</button>
+      <div className={styles.buttonContainer}>
+        <button>Play</button>
+      </div>
     </form>
   );
 }
-
 export default Form;
+
+// API link
