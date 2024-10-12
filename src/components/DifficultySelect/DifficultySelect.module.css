@@ -1,0 +1,23 @@
+.difficultyContainer select {
+  flex-basis: 50%;
+}
+
+.difficultyContainer {
+  display: flex;
+}
+
+.difficultyContainer select {
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: 100%;
+  font-size: 1.1rem;
+}
+
+select:focus {
+  border-color: purple;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
