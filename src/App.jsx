@@ -5,6 +5,7 @@ import QuizGame from "./pages/QuizGame";
 import QuizScore from "./pages/QuizScore";
 import PageNotFound from "./pages/PageNotFound";
 import { FormProvider } from "./context/FormProvider.jsx";
+import { QuestionsProvider } from "./context/QuestionsProvider.jsx";
 
 export default function App() {
   return (
@@ -13,7 +14,14 @@ export default function App() {
         <FormProvider>
           <Routes>
             <Route path="/" element={<StartingScreen />} />
-            <Route path="quizgame" element={<QuizGame />} />
+            <Route
+              path="quizgame"
+              element={
+                <QuestionsProvider>
+                  <QuizGame />
+                </QuestionsProvider>
+              }
+            />
             <Route path="score" element={<QuizScore />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
