@@ -1,13 +1,12 @@
+import { useForm } from "../../context/FormProvider.jsx";
 import styles from "./CategorySelect.module.css";
 
-function CategorySelect({ onHandleUserInput }) {
+function CategorySelect() {
+  const { onUserInput } = useForm();
   return (
     <div className={styles.categoryContainer}>
       <label htmlFor="category">Category</label>
-      <select
-        id="category"
-        onChange={(e) => onHandleUserInput(e, "getCategory")}
-      >
+      <select id="category" onChange={(e) => onUserInput(e, "getCategory")}>
         <option value="9">General Knowledge</option>
         <option value="10">Books</option>
         <option value="11">Films</option>

@@ -1,13 +1,15 @@
+import { useForm } from "../../context/FormProvider.jsx";
 import styles from "./NumberOfQuestions.module.css";
 
-function NumberOfQuestions({ onHandleUserInput }) {
+function NumberOfQuestions() {
+  const { onUserInput } = useForm();
   return (
     <div className={styles.questionsContainer}>
       <label htmlFor="questions">Questions</label>
       <input
         type="number"
         id="questions"
-        onChange={(e) => onHandleUserInput(e, "getQuestions")}
+        onChange={(e) => onUserInput(e, "getQuestions")}
       ></input>
     </div>
   );
