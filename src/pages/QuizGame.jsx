@@ -1,5 +1,11 @@
+import QuizQuestions from "../components/QuizQuestions/QuizQuestions";
+
 function QuizGame() {
-  return <div>The game will take place here</div>;
+  return (
+    <div>
+      <QuizQuestions />
+    </div>
+  );
 }
 
 export default QuizGame;
