@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const initialState = {
   amountOfQuestions: 0,
   difficulty: "easy",
-  category: "General Knowledge",
+  category: 9,
 };
 
 function reducer(state, action) {

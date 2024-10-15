@@ -7,6 +7,7 @@ function QuestionsProvider({ children }) {
   const { amountOfQuestions, difficulty, category } = useForm();
   const [token, setToken] = useState(null);
   const [questions, setQuestions] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const didFetch = useRef(false);
 
   useEffect(
@@ -33,6 +34,7 @@ function QuestionsProvider({ children }) {
 
   useEffect(() => {
     if (token) {
+      setIsLoading(true);
       const getQuestions = async () => {
         try {
           const res = await fetch(
@@ -42,17 +44,19 @@ function QuestionsProvider({ children }) {
           setQuestions(data.results);
         } catch (err) {
           console.error("Error fetching quiz data:", err);
+        } finally {
+          setIsLoading(false);
         }
       };
       getQuestions();
     }
   }, [token, amountOfQuestions, difficulty, category]);
 
-  //   console.log(questions);
   return (
     <QuestionsContext.Provider
       value={{
         questions,
+        isLoading,
       }}
     >
       {children}

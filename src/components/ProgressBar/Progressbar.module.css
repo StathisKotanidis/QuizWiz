@@ -1,0 +1,19 @@
+.progressBarContainer {
+  flex-basis: 10%;
+}
+
+progress {
+  width: 900px;
+  height: 30px;
+}
+
+.progressContainer {
+  flex-basis: 10%;
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
+}
+
+span {
+  font-size: 1.5rem;
+}

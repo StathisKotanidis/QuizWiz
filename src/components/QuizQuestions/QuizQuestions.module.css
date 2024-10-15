@@ -1,0 +1,19 @@
+.questionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.questionsContainer span {
+  border: 1px solid red;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 1rem;
+  width: 80%;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.questionsContainer span:hover {
+  cursor: pointer;
+  transform: translateX(10px);
+}
