@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.categoryContainer label {
+  color: #751191;
+}
+
 .categoryContainer select {
   padding: 10px;
   border-radius: 20px;

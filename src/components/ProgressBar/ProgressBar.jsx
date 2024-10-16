@@ -7,7 +7,7 @@ function ProgressBar() {
       <progress max={questions.length} value={1}></progress>
       <div className={styles.progressContainer}>
         <span>Question: 1</span>
-        <span> 1/{questions.length}</span>
+        <span> Score: 1/{questions.length}</span>
       </div>
     </div>
   );

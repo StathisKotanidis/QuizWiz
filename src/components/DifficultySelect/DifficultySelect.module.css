@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.difficultyContainer label {
+  color: #751191;
+}
+
 .difficultyContainer select {
   padding: 10px;
   border-radius: 20px;

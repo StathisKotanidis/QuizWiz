@@ -5,15 +5,31 @@
 progress {
   width: 900px;
   height: 30px;
+  border-radius: 7px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #f0f0f0;
+  border-radius: 7px;
+}
+
+progress::-webkit-progress-value {
+  background-color: rgb(180, 69, 180);
+  border-radius: 7px;
+}
+
+progress::-moz-progress-bar {
+  background-color: rgb(180, 69, 189);
+  border-radius: 7px;
 }
 
 .progressContainer {
-  flex-basis: 10%;
   display: flex;
   justify-content: space-between;
   width: 900px;
 }
 
-span {
+.progressContainer span {
   font-size: 1.5rem;
+  font-style: italic;
 }
