@@ -14,9 +14,11 @@
 .questionsContainer h1 {
   color: #751191;
   font-size: 1.6rem;
+  font-weight: 900;
 }
 
-.questionsContainer span {
+.quizContainer .questionsContainer button {
+  all: unset;
   background-color: #e0aaff;
   color: rgb(34, 34, 167);
   border: 2px solid #e0aaff;
@@ -28,7 +30,7 @@
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.questionsContainer span:hover {
+.quizContainer .questionsContainer button:hover {
   background-color: #ff85b3;
   border-color: #ff85b3;
   color: #fff;
@@ -42,16 +44,18 @@
 }
 
 .buttonContainer button {
-  width: 210px;
+  width: 200px;
   padding: 10px;
 }
 
 .correctAnswer {
-  background-color: green;
-  color: white;
+  background-color: green !important;
+  color: white !important;
+  border: 2px solid green !important;
 }
 
 .incorrectAnswer {
-  background-color: red;
-  color: white;
+  background-color: red !important;
+  color: white !important;
+  border: 2px solid red !important;
 }

@@ -14,9 +14,10 @@ function shuffleArray(array) {
 }
 
 function QuizQuestions() {
-  const { questions } = useQuestions();
+  const { questions, index, onButtonClick } = useQuestions();
   const { amountOfQuestions } = useForm();
-  const [index, setIndex] = useState(0);
+  const [answerClick, setAnswerClick] = useState(false);
+  const [clickedAnswer, setClickedAnswer] = useState(null);
   const [updatedQuestions, setUpdatedQuestions] = useState([]);
 
   useEffect(() => {
@@ -34,11 +35,16 @@ function QuizQuestions() {
       setUpdatedQuestions(shuffledQuestions);
     }
   }, [questions]);
-  console.log(updatedQuestions);
 
-  function handleIndex() {
-    setIndex((prevIndex) => prevIndex + 1);
-  }
+  useEffect(() => {
+    setAnswerClick(false);
+    setClickedAnswer(null);
+  }, [index]);
+
+  const handleAnswerClick = (answer) => {
+    setAnswerClick(true);
+    setClickedAnswer(answer);
+  };
 
   return (
     <div className={styles.quizContainer}>
@@ -48,15 +54,32 @@ function QuizQuestions() {
             ? he.decode(updatedQuestions[index].question)
             : "Loading..."}
         </h1>
-        {updatedQuestions[index]?.options.map((answer, i) => (
-          <span key={i}>{he.decode(answer)}</span>
+        {updatedQuestions[index]?.options.map((answer) => (
+          <button
+            onClick={() => handleAnswerClick(answer)}
+            key={answer}
+            disabled={answerClick}
+            className={
+              answerClick
+                ? answer === updatedQuestions[index]?.correct_answer
+                  ? styles.correctAnswer
+                  : styles.incorrectAnswer
+                : ""
+            }
+          >
+            {he.decode(answer)}
+          </button>
         ))}
       </div>
-      <Button
-        text={index < amountOfQuestions - 1 ? "Next" : "Results"}
-        className={styles.buttonContainer}
-        onClick={handleIndex}
-      />
+      {answerClick ? (
+        <Button
+          text={index < amountOfQuestions - 1 ? "Next" : "Results"}
+          className={styles.buttonContainer}
+          onClick={onButtonClick}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

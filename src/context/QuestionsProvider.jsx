@@ -8,6 +8,7 @@ function QuestionsProvider({ children }) {
   const [token, setToken] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [index, setIndex] = useState(0);
   const didFetch = useRef(false);
 
   useEffect(
@@ -52,11 +53,18 @@ function QuestionsProvider({ children }) {
     }
   }, [token, amountOfQuestions, difficulty, category]);
 
+  function handleIndex() {
+    setIndex((prevIndex) => prevIndex + 1);
+  }
+
   return (
     <QuestionsContext.Provider
       value={{
         questions,
         isLoading,
+        index,
+
+        onButtonClick: handleIndex,
       }}
     >
       {children}
