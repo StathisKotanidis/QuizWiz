@@ -59,3 +59,8 @@
   color: white !important;
   border: 2px solid red !important;
 }
+
+.questionsContainer button:focus {
+  transform: translateX(100px);
+  transition: transform 0.3s ease;
+}
