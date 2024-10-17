@@ -31,11 +31,18 @@
 }
 
 .quizContainer .questionsContainer button:hover {
-  background-color: #ff85b3;
-  border-color: #ff85b3;
-  color: #fff;
+  background-color: rgb(204, 141, 230);
+  border-color: rgb(204, 141, 230);
+  color: black;
   cursor: pointer;
   transform: translateX(10px);
+}
+
+.timerAndButton {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
 }
 
 .buttonContainer {
@@ -46,18 +53,19 @@
 .buttonContainer button {
   width: 200px;
   padding: 10px;
+  margin: 0;
 }
 
 .correctAnswer {
-  background-color: green !important;
+  background-color: rgb(40, 150, 40) !important;
   color: white !important;
-  border: 2px solid green !important;
+  border: 2px solid rgb(40, 150, 40) !important;
 }
 
 .incorrectAnswer {
-  background-color: red !important;
+  background-color: rgb(233, 66, 66) !important;
   color: white !important;
-  border: 2px solid red !important;
+  border: 2px solid rgb(233, 66, 66) !important;
 }
 
 .questionsContainer button:focus {

@@ -1,13 +1,18 @@
 import { useQuestions } from "../../context/QuestionsProvider";
 import styles from "./ProgressBar.module.css";
 function ProgressBar() {
-  const { questions, index } = useQuestions();
+  const { updatedQuestions, index, score, answerClick } = useQuestions();
   return (
     <div className={styles.progressBarContainer}>
-      <progress max={questions.length} value={index}></progress>
+      <progress
+        max={updatedQuestions.length}
+        value={index + Number(answerClick !== null)}
+      ></progress>
       <div className={styles.progressContainer}>
         <span>Question: {index + 1}</span>
-        <span> Score: 0/{questions.length}</span>
+        <span>
+          Score: {score}/{updatedQuestions.length}
+        </span>
       </div>
     </div>
   );

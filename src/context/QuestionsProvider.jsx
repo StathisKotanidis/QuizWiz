@@ -3,12 +3,25 @@ import { useForm } from "./FormProvider";
 
 const QuestionsContext = createContext();
 
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
+  }
+  return array;
+}
+
 function QuestionsProvider({ children }) {
   const { amountOfQuestions, difficulty, category } = useForm();
   const [token, setToken] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [index, setIndex] = useState(0);
+  const [answerClick, setAnswerClick] = useState(false);
+  const [clickedAnswer, setClickedAnswer] = useState(null);
+  const [updatedQuestions, setUpdatedQuestions] = useState([]);
+  const [score, setScore] = useState(0);
+  const [time, setTime] = useState(15);
   const didFetch = useRef(false);
 
   useEffect(
@@ -53,6 +66,48 @@ function QuestionsProvider({ children }) {
     }
   }, [token, amountOfQuestions, difficulty, category]);
 
+  useEffect(() => {
+    if (questions && questions.length > 0) {
+      const shuffledQuestions = questions.map((question) => {
+        const options = [
+          ...question.incorrect_answers,
+          question.correct_answer,
+        ];
+        return {
+          ...question,
+          options: shuffleArray(options),
+        };
+      });
+      setUpdatedQuestions(shuffledQuestions);
+    }
+  }, [questions]);
+
+  useEffect(() => {
+    setAnswerClick(false);
+    setClickedAnswer(null);
+  }, [index]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    setTime(15);
+  }, [index]);
+
+  function handleAnswerClick(answer) {
+    setAnswerClick(true);
+    setClickedAnswer(answer);
+
+    if (answer === updatedQuestions[index].correct_answer) {
+      setScore((prevScore) => prevScore + 1);
+    }
+  }
+
   function handleIndex() {
     setIndex((prevIndex) => prevIndex + 1);
   }
@@ -60,10 +115,13 @@ function QuestionsProvider({ children }) {
   return (
     <QuestionsContext.Provider
       value={{
-        questions,
+        updatedQuestions,
         isLoading,
         index,
-
+        answerClick,
+        score,
+        time,
+        onAnswerClick: handleAnswerClick,
         onButtonClick: handleIndex,
       }}
     >
