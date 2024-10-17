@@ -83,17 +83,19 @@ function QuestionsProvider({ children }) {
   }, [questions]);
 
   useEffect(() => {
-    setAnswerClick(false);
-    setClickedAnswer(null);
-  }, [index]);
-
-  useEffect(() => {
     const timer = setInterval(() => {
-      setTime((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
+      setTime((prevTime) => {
+        if (prevTime > 0) {
+          return prevTime - 1;
+        } else {
+          handleIndex();
+          return 0;
+        }
+      });
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [index, handleIndex]);
 
   useEffect(() => {
     setTime(15);
@@ -109,6 +111,7 @@ function QuestionsProvider({ children }) {
   }
 
   function handleIndex() {
+    setAnswerClick(false);
     setIndex((prevIndex) => prevIndex + 1);
   }
 

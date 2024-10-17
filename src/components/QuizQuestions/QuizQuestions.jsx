@@ -6,14 +6,8 @@ import Button from "../Button/Button";
 import Timer from "../Timer/Timer";
 
 function QuizQuestions() {
-  const {
-    updatedQuestions,
-    index,
-    answerClick,
-    onAnswerClick,
-    onButtonClick,
-    time,
-  } = useQuestions();
+  const { updatedQuestions, index, answerClick, onAnswerClick, onButtonClick } =
+    useQuestions();
   const { amountOfQuestions } = useForm();
 
   return (
@@ -28,7 +22,7 @@ function QuizQuestions() {
           <button
             onClick={() => onAnswerClick(answer)}
             key={answer}
-            disabled={answerClick || time <= 0}
+            disabled={answerClick}
             className={
               answerClick
                 ? answer === updatedQuestions[index]?.correct_answer
@@ -43,7 +37,7 @@ function QuizQuestions() {
       </div>
       <div className={styles.timerAndButton}>
         <Timer />
-        {answerClick || time <= 0 ? (
+        {answerClick ? (
           <Button
             text={index < amountOfQuestions - 1 ? "Next" : "Results"}
             className={styles.buttonContainer}

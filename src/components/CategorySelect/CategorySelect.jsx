@@ -5,8 +5,13 @@ function CategorySelect() {
   const { onUserInput } = useForm();
   return (
     <div className={styles.categoryContainer}>
-      <label htmlFor="category">Category</label>
+      <label htmlFor="category" className={styles.visuallyHidden}>
+        Category
+      </label>
       <select id="category" onChange={(e) => onUserInput(e, "getCategory")}>
+        <option value="" disabled selected>
+          Select Category
+        </option>
         <option value="9">General Knowledge</option>
         <option value="10">Books</option>
         <option value="11">Films</option>

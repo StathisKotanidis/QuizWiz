@@ -4,10 +4,7 @@
 
 .categoryContainer {
   display: flex;
-}
-
-.categoryContainer label {
-  color: #751191;
+  justify-content: center;
 }
 
 .categoryContainer select {
@@ -18,10 +15,28 @@
   transition: all 0.3s ease;
   width: 100%;
   font-size: 1.1rem;
+  color: rgb(184, 41, 184);
+  font-weight: 600;
+}
+
+.categoryContainer select option {
+  color: rgb(184, 41, 184);
+  font-weight: 600;
 }
 
 select:focus {
   border-color: purple;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   outline: none;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
