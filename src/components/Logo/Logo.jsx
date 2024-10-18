@@ -1,9 +1,10 @@
 import styles from "./Logo.module.css";
+import logo from "../../assets/logo.png";
 
 function Logo() {
   return (
     <div className={styles.imageContainer}>
-      <img src="./src/assets/logo.png" alt="quizwiz-logo"></img>
+      <img src={logo} alt="quizwiz-logo" />
     </div>
   );
 }
