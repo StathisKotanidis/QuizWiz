@@ -1,0 +1,11 @@
+.resultsContainer {
+  text-align: center;
+  width: 50%;
+  margin-top: 15rem;
+}
+
+.resultsContainer p {
+  color: navy;
+  font-size: 3em;
+  font-style: italic;
+}

@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "./FormProvider";
+import { useNavigate } from "react-router-dom";
 
 const QuestionsContext = createContext();
 
@@ -23,6 +24,7 @@ function QuestionsProvider({ children }) {
   const [score, setScore] = useState(0);
   const [time, setTime] = useState(15);
   const didFetch = useRef(false);
+  const navigate = useNavigate();
 
   useEffect(
     function () {
@@ -110,6 +112,10 @@ function QuestionsProvider({ children }) {
     }
   }
 
+  function handleResults() {
+    navigate("/score");
+  }
+
   function handleIndex() {
     setAnswerClick(false);
     setIndex((prevIndex) => prevIndex + 1);
@@ -125,7 +131,8 @@ function QuestionsProvider({ children }) {
         score,
         time,
         onAnswerClick: handleAnswerClick,
-        onButtonClick: handleIndex,
+        onHandleNextQuestion: handleIndex,
+        onHandleResults: handleResults,
       }}
     >
       {children}

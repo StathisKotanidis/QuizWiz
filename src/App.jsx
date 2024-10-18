@@ -22,7 +22,14 @@ export default function App() {
                 </QuestionsProvider>
               }
             />
-            <Route path="score" element={<QuizScore />} />
+            <Route
+              path="score"
+              element={
+                <QuestionsProvider>
+                  <QuizScore />
+                </QuestionsProvider>
+              }
+            />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </FormProvider>

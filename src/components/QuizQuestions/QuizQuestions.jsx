@@ -6,8 +6,14 @@ import Button from "../Button/Button";
 import Timer from "../Timer/Timer";
 
 function QuizQuestions() {
-  const { updatedQuestions, index, answerClick, onAnswerClick, onButtonClick } =
-    useQuestions();
+  const {
+    updatedQuestions,
+    index,
+    answerClick,
+    onHandleResults,
+    onAnswerClick,
+    onHandleNextQuestion,
+  } = useQuestions();
   const { amountOfQuestions } = useForm();
 
   return (
@@ -41,7 +47,11 @@ function QuizQuestions() {
           <Button
             text={index < amountOfQuestions - 1 ? "Next" : "Results"}
             className={styles.buttonContainer}
-            onClick={onButtonClick}
+            onClick={
+              index + 1 === amountOfQuestions
+                ? onHandleResults
+                : onHandleNextQuestion
+            }
           />
         ) : (
           ""
