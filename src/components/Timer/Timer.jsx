@@ -6,7 +6,7 @@ function Timer() {
 
   return (
     <div className={styles.timerContainer}>
-      <span>15</span>
+      <span>{time}</span>
     </div>
   );
 }

@@ -84,24 +84,24 @@ function QuestionsProvider({ children }) {
     }
   }, [questions]);
 
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setTime((prevTime) => {
-  //       if (prevTime > 0) {
-  //         return prevTime - 1;
-  //       } else {
-  //         handleIndex();
-  //         return 0;
-  //       }
-  //     });
-  //   }, 1000);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime((prevTime) => {
+        if (prevTime > 0) {
+          return prevTime - 1;
+        } else {
+          handleIndex();
+          return 0;
+        }
+      });
+    }, 1000);
 
-  //   return () => clearInterval(timer);
-  // }, [index, handleIndex]);
+    return () => clearInterval(timer);
+  }, [index, handleIndex]);
 
-  // useEffect(() => {
-  //   setTime(15);
-  // }, [index]);
+  useEffect(() => {
+    setTime(15);
+  }, [index]);
 
   function handleAnswerClick(answer) {
     setAnswerClick(true);
