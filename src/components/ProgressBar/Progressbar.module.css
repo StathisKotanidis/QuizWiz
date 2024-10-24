@@ -3,7 +3,7 @@
 }
 
 progress {
-  width: 900px;
+  width: 56rem;
   height: 30px;
   border-radius: 7px;
 }
@@ -26,10 +26,65 @@ progress::-moz-progress-bar {
 .progressContainer {
   display: flex;
   justify-content: space-between;
-  width: 900px;
 }
 
 .progressContainer span {
   font-size: 1.5rem;
   font-style: italic;
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+  progress {
+    width: 80vw;
+  }
+
+  .progressContainer {
+    width: 80vw;
+  }
+
+  .progressContainer span {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 800px) {
+  progress {
+    width: 80vw;
+  }
+
+  .progressContainer {
+    width: 80vw;
+  }
+
+  .progressContainer span {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1024px) {
+  progress {
+    width: 80vw;
+  }
+
+  .progressContainer {
+    width: 80vw;
+  }
+
+  .progressContainer span {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1300px) {
+  progress {
+    width: 80vw;
+  }
+
+  .progressContainer {
+    width: 80vw;
+  }
+
+  .progressContainer span {
+    font-size: 1.5rem;
+  }
 }
