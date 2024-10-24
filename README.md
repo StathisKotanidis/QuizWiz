@@ -2,7 +2,7 @@
 
 QuizWiz is an interactive quiz application that allows users to test their knowledge across various categories. Users can select the number of questions, difficulty level, and category to customize their quiz experience. The app dynamically fetches data from an external trivia API and provides real-time feedback for each question.
 
-**Link to Project:** [QuizWiz Live App](your-live-app-link)
+**Link to Project:** [QuizWiz Live App](https://stathiskotanidis-quizwiz.netlify.app/)
 
 ---
 
