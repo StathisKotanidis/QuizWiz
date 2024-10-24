@@ -9,7 +9,7 @@ function NumberOfQuestions() {
         Questions
       </label>
       <input
-        placeholder="Select the Amount of Questions"
+        placeholder="Enter the Amount of Questions"
         max={50}
         min={1}
         required

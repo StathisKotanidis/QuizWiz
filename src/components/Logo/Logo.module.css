@@ -1,4 +1,24 @@
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .imageContainer img {
-  width: 500px;
-  height: 100px;
+  width: 40rem;
+  max-width: 100%;
+}
+
+/*Media Queries*/
+
+@media (min-width: 320px) and (max-width: 420px) {
+  .imageContainer img {
+    width: 20rem;
+  }
+}
+
+@media (min-width: 421px) and (max-width: 600px) {
+  .imageContainer img {
+    width: 30rem;
+  }
 }
